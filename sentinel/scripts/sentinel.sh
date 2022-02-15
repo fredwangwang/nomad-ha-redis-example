@@ -4,8 +4,6 @@ SENTINEL_CONFIG_PATH=/local/sentinel.conf
 
 REDIS_PASSWORD=password
 
-nodes=0.redis.service.consul,1.redis.service.consul,2.redis.service.consul
-
 # TODO: wait for discovery of redis first in consul dns sd.
 
 FORCE_INIT=false
@@ -42,7 +40,7 @@ function patch_announce_ip {
 
 discover_count=0
 function patch_master_replica {
-    for node in $${nodes//,/ }; do
+    for node in $${REDIS_NODES//,/ }; do
         echo "finding master at $node"
         MASTER="$(redis-cli --raw -h $node info replication | grep master_host: | cut -d: -f2 | tr -d '\n\r')"
         if [[ "$MASTER" == "" ]]; then

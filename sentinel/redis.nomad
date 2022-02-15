@@ -101,7 +101,8 @@ EOH
 
       env {
         // n/2 + 1
-        QUORUM = "[[ (add (divide  2 .sentienl.count) 1) ]]"
+        QUORUM      = "[[ (add (divide  2 .sentienl.count) 1) ]]"
+        REDIS_NODES = "[[ range $i := loop ( add .redis.count 0 ) ]][[ if $i ]],[[ end ]][[ $i ]].redis.service.consul[[ end ]]"
       }
 
       config {
