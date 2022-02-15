@@ -1,0 +1,5 @@
+---
+redis:
+  count: 3
+consul_token: ""
+datacenters: ["dc1"]
