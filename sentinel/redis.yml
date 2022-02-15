@@ -1,0 +1,6 @@
+---
+redis:
+  count: 3
+sentienl:
+  count: 3
+datacenters: ["dc1"]
